@@ -1,10 +1,13 @@
+import os
+
 from Day1.Python.src.Save import Direction, Safe
 
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 
 def test_save():
 
     # Load instructions
-    path_to_instructions = "instructions.txt"
+    path_to_instructions = os.path.join(ROOT_DIR, "instructions.txt")
     instructions = []
     with open(path_to_instructions) as f:
 
@@ -35,7 +38,7 @@ def test_save():
 def test_save_2():
 
     # Load instructions
-    path_to_instructions = "instructions_2.txt"
+    path_to_instructions = os.path.join(ROOT_DIR, "instructions_2.txt")
     instructions = []
     with open(path_to_instructions) as f:
 
