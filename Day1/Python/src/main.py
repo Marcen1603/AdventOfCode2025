@@ -17,12 +17,15 @@ if __name__ == "__main__":
             instructions.append((Direction.from_str(direction), int(movement)))
 
     # Execute instructions
-    result = 0
+    step_over_zero = 0
+    end_result_zero = 0
     safe = Safe()
     for instruction in instructions:
-        safe.rotating(instruction[0], instruction[1])
+        step_over_zero += safe.rotating(instruction[0], instruction[1])
         if safe.dial == 0:
-            result += 1
+            end_result_zero += 1
 
     # Show result
-    print(f"Result: {result}")
+    print(f"Step over zero: {step_over_zero}")
+    print(f"End result zero: {end_result_zero}")
+    print(f"Total: {step_over_zero + end_result_zero}")

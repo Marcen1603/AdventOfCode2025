@@ -23,7 +23,7 @@ class Safe:
         # Set initial value to 50
         self.dial = 50
 
-    def rotating(self, direction: Direction, movement: int):
+    def rotating(self, direction: Direction, movement: int) -> int:
         """
         This method is used to rotate the dial of the save to each direction
 
@@ -31,6 +31,7 @@ class Safe:
         :param movement: Defines how much positions the dial should move
         :return:
         """
+        step_over_zero = 0
         # Rotating left
         if direction == Direction.LEFT:
 
@@ -41,6 +42,11 @@ class Safe:
                 else:
                     self.dial -= 1
 
+                if x < movement - 1 and self.dial == 0:
+                    step_over_zero += 1
+
+            return step_over_zero
+
         # Rotating right
         elif direction == Direction.RIGHT:
 
@@ -50,6 +56,11 @@ class Safe:
                     self.dial = 0
                 else:
                     self.dial += 1
+
+                if x < movement - 1 and self.dial == 0:
+                    step_over_zero += 1
+
+            return step_over_zero
 
         else:
             raise ValueError(f"Not supported direction {direction}")
